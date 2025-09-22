@@ -4,12 +4,14 @@
 #include <thread>
 #include <chrono>
 #include <list>
+#include <mutex>
 
 #pragma region Fucntions Declaration Header
 
 #pragma region Global Variables
 
 std::chrono::system_clock::time_point startDate;
+std::mutex* consoleMutex;
 
 void PrintElapsedTime(
 	std::chrono::system_clock::time_point start,
@@ -29,10 +31,10 @@ void Example07();
 
 void ThreadTutorialTest()
 {
-
+	consoleMutex = new std::mutex()
 	startDate = std::chrono::system_clock::now();
 
-	int exampleUsed = 7; //Change this variable for use diferents examples
+	int exampleUsed = 3; //Change this variable for use diferents examples
 
 	switch (exampleUsed)
 	{
@@ -67,17 +69,21 @@ void ThreadTutorialTest()
 }
 
 void PrintElapsedTime(
-	std::chrono::system_clock::time_point start,
+	std::chrono::system_clock::time_point start, 
 	std::chrono::system_clock::time_point end,
 	std::string threadName)
 {
 	std::chrono::duration<double> elapsedTime = end - start;
-	std::cout << "Thread: " << threadName <<
-		" - Elapsed time: " << elapsedTime.count() << "seconds" << std::endl;
+
+	consoleMutex->lock();
+
+	std::cout << "Thread: " << threadName << " - Elapsed time: " << elapsedTime.count() << "seconds" << std::endl;
+
+	consoleMutex->unlock();
 }
 
 
-void Count(unsigned long long maxCounter, std::string threadName)
+void Count(unsigned long long maxCounter, std::string threadName) 
 {
 	for (unsigned long long i = 0; i < maxCounter; i++)
 	{
@@ -197,7 +203,7 @@ class ThreadTester
 {
 public:
 	ThreadTester() {}
-	ThreadTester() {}
+	~ThreadTester() {}
 
 	void Example07();
 
