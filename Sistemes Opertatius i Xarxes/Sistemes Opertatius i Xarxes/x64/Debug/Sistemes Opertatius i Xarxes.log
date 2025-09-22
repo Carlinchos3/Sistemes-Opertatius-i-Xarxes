@@ -1,2 +1,2 @@
 ﻿MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
-C:\Users\CarlosBlascoPomarol\Documents\Git Kraken\Sistemes Operatius i Xarxes\Sistemes-Opertatius-i-Xarxes\Sistemes Opertatius i Xarxes\x64\Debug\Sistemes Opertatius i Xarxes.exe : fatal error LNK1120: 1 unresolved externals
+C:\Users\CarlosBlascoPomarol.AzureAD\Documents\Kraken\Sistemes-Opertatius-i-Xarxes\Sistemes Opertatius i Xarxes\x64\Debug\Sistemes Opertatius i Xarxes.exe : fatal error LNK1120: 1 unresolved externals
